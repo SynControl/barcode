@@ -186,8 +186,8 @@ class DNS2D {
         //set barcode code and type
         $this->setBarcode($code, $type);
         // calculate image size
-        $width = ($this->barcode_array['num_cols'] * $w);
-        $height = ($this->barcode_array['num_rows'] * $h);
+        $width = ($this->barcode_array['num_cols'] * $w) + 20;
+        $height = ($this->barcode_array['num_rows'] * $h) + 20;
         if (function_exists('imagecreate')) {
             // GD library
             $imagick = false;
@@ -207,10 +207,10 @@ class DNS2D {
             return false;
         }
         // print barcode elements
-        $y = 0;
+        $y = 10;
         // for each row
         for ($r = 0; $r < $this->barcode_array['num_rows']; ++$r) {
-            $x = 0;
+            $x = 10;
             // for each column
             for ($c = 0; $c < $this->barcode_array['num_cols']; ++$c) {
                 if ($this->barcode_array['bcode'][$r][$c] == 1) {
